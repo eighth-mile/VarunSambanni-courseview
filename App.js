@@ -1,22 +1,48 @@
 import { StyleSheet, Text, View, Button, Icon } from 'react-native';
-import List from './components/List'
 import { StatusBar } from 'expo-status-bar';
+import HomeView from './pages/HomeView';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import ProgramSelector from './pages/ProgramSelector' 
+import SubjectSyllabus from './pages/SubjectSyllabus';
 
+
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   return (
-     <View style={styles.container}>
-        <List/>
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
+            name="Home"
+            component={HomeView}
+            options={{ ...stackOptions, title: "Courseview" }}
+          />
+          <Stack.Screen
+            name="ProgramSelector"
+            component={ProgramSelector}
+            options={{ ...stackOptions, title: "Available programs" }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <StatusBar style="light" />
+    </SafeAreaProvider>
   );
 }
+
+const stackOptions = {
+  headerStyle: {
+    backgroundColor: '#3C6BA3'
+  },
+  headerTintColor: '#fff',
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
