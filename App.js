@@ -4,9 +4,9 @@ import HomeView from './pages/HomeView';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import ProgramSelector from './pages/ProgramSelector' 
+import ProgramSelector from './pages/ProgramSelector'
 import SubjectSyllabus from './pages/SubjectSyllabus';
-
+import SubjectList from './pages/SubjectList';
 
 
 const Stack = createNativeStackNavigator();
@@ -25,6 +25,16 @@ export default function App() {
             name="ProgramSelector"
             component={ProgramSelector}
             options={{ ...stackOptions, title: "Available programs" }}
+          />
+          <Stack.Screen
+            name="SubjectList"
+            component={SubjectList}
+            options={{ ...stackOptions, title: "Subject List" }}
+          />
+          <Stack.Screen
+            name="SubjectSyllabus"
+            component={SubjectSyllabus}
+            options={{ ...stackOptions, title: "Subject Syllabus" }}
           />
         </Stack.Navigator>
       </NavigationContainer>

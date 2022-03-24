@@ -18,7 +18,7 @@ export default function getSyllabusHTML(markdown) {
 
 function markdownToHTML(markdown) {
   const converter = new showdown.Converter();
-  converter.setFlavor('github');;
+  converter.setFlavor('github');
   return converter.makeHtml(markdown);
 }
 

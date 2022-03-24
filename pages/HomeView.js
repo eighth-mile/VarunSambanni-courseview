@@ -13,8 +13,10 @@ export default function HomeView({ navigation }) {
     const [programs, setPrograms] = useState([]);
 
     function onAddcourse() {
-        console.log("add course pressed");
         navigation.navigate('ProgramSelector');
+    }
+    function navigateToSubjectListPage(title) {
+        navigation.navigate('SubjectList', { title });
     }
 
     async function deleteProgram(title) {
@@ -42,6 +44,7 @@ export default function HomeView({ navigation }) {
                         title={program.title}
                         subtitle={program.subjects.length}
                         action={<DeleteButton onPress={() => deleteProgram(program.title)} />}
+                        onPress={() => navigateToSubjectListPage(program.title)}
                     >
                     </ListItem>
                 })}
